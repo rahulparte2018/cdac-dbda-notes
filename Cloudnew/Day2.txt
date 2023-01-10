@@ -1,0 +1,269 @@
+- save 50$ for project
+- search for S3 services
+- learners lab - start the lab - click on the AWS green button - it will take you to the S3 console for aws
+- create a bucket - similar to folders in your laptop
+- there are some naming restriction
+- choose a name that is unique
+- keep everything default
+- go to the folder you have created
+- move the resume file in that folder
+- rename the html file as index
+- rename the css file as styles
+
+- something related to head in the html
+- done adding css to html 
+- add js to html as well
+
+- now click on the bucket and add the folder and select the folder name
+- other way is to drag and drop
+- then click on upload
+- the folder is then uploaded to the bucket
+- delele files
+- by adding permenanelty delete as as safe guard
+
+- click on folder - click on delete - type permenantly delete
+
+- go to properties - its at the bucket start
+- static website hosting - initially disables - enable it
+- by default home page has .html ending
+- index.html put that as the index document
+- error document - is the page your service takes you to when your current html is not working
+- that is it - save changes
+
+- we go down to the properties and you get a link 
+- not completed yet - will get an error
+- error is access denied
+- initially people used to upload their folders and that they used to be able to acess 
+
+- permissions
+- here we will change the default permission from protected to public
+- block public access - uncheck it - save changes
+- type confirm
+
+- to learn more
+- write aws static website hosting
+- since the UI keeps on changing refer to the official AWS documentation
+- click on enabling website hosting
+- Using S3 console
+
+- bucket policy
+- this tells which files in the folder should be given access to.
+- aws policy generator
+- define the rules
+- principal as *
+- all the actions that S3 will allow
+- get object is an action that allows user to get files from your bucket 
+- ARN is important
+- used to specify for which bucket it is
+- go to the bucket properties and you will get the amazon resource id
+- paste in it
+- add statement
+- click on generate policy 
+- copy this and paste it the bucket policy
+- sid is an id for the policy
+- used to see if everyone is using the same policy or not
+- effect - allow or deny
+- Statement is a list
+- principal is who all the access is given to 
+	- star means all the public
+- action is what all is allowed to do -
+- resources is what you are allowing access to 
+
+- if you update your local file, the changes are not seen on the server as there is no link setup
+- you have to reupload that folder
+
+- go to your bucket 
+- go to the html file
+- every object has a unique url
+- object url
+- click on the object url and your webstie is live
+
+- the amazonaws changes according to the region
+
+- if you want to a good name for your services
+- there is another amazon service
+- route 53 dashboard
+- host name
+- go daddy
+- prices depend on the bidding system
+- bluehost
+
+- aws service prices
+- pricing is specific to service
+- 12 months free - on actual aws account
+- there are different instances on EC2
+
+- aws billing sdrvice
+- which servies are charged
+
+- s3 simle storage service
+
+- S3 simple storage service
+- object storage service 
+- offering industry - leading scalability 
+- user guide and documentation will provide us with all the information
+
+- deleting a bucket needs us first to empty it
+
+-  any file stored on computer has an extension
+- in S3 though, all the files are stored as an object
+- S3 is an object storage service
+
+- scalability
+- depending on demand one can increase and decrease the amount of resources being used
+
+- availability 
+
+- security
+
+- performance
+
+- use cases
+backup and storage
+disaster recovery	(by default S3 stores multiple copies)
+archive	(data on Ram is accessed faster so its costlier. for archival we put it on magnetic tape)
+hybrid cloud storage (we have data on local storage, and then every day you replicate it to the s3)
+application hosting and media hosting 
+data lakes and big data analytics
+software delivery (
+static website
+
+
+Depending on storage type - the charges also vary
+
+- S3 is a region level service
+- the name after the bucket name is called key
+- two parts
+
+- multipart upload
+- divides the huge 5Tb file into smaller 5Gb files and uploading it parallely
+
+- default encryption
+- provided by S3
+- SHA 256
+- provided when storing data
+- data stored as encrpted data
+
+IAM policies and encryption is used for security
+
+three type encryption, AWS manages it
+client side encryption - encrypt and upload
+
+S3 versioning
+- samme object file upload will replace the preexisting file
+- enable bucket versioning
+
+Tag
+key value pairs
+organisation - student
+section - A
+- used for billing purposes
+
+object lock
+is used to prevent deletion of files by any random user
+
+S3 versioning 
+its a features that enables the user to maintain versions of the same files in your S3 bucket
+when disabled
+
+static website - content of the website does not change
+dynamic website - content of the website keeps on changing
+
+S3 replication
+latency of 2sec in aws
+
+access log storage
+all the api calls are logged
+
+durability - data loss 99.99...99 11 times
+
+S3 storage classes
+by default we store in S3 standard - costliest
+all the functionality
+
+S3 intelligent tiering
+- help move files across different storage class
+- select any object - go to its storage class and change it
+
+S3 IA
+- infrequent access
+
+S3 one zone IA
+- eg profile pictures 
+
+glacier is archival
+cold data - not actively being used
+
+hot data - data in use
+
+first byte latency
+
+life cycle transition
+- create lifecycle rule
+- rule name for action
+- after every 10 days expire the data
+- after every 10 days move the data to different data class
+
+- bucket - managemnet - create life cycle rule - delete object
+
+administering and monitoring cloud services
+- administration is to control or manage something IAM
+- monitor - to test regularly for a period of time
+
+IAM identity and access management
+cloudwatch 
+user group
+user policy
+roles
+
+user 
+- are people to which you want to give access to the aws account
+- root user is the first person who created that account
+- normal user will have company name in the name
+- admin user are not root user but they have all the other access
+- completely used for access management
+
+- group user together
+- engineers require development services
+
+policies
+- group of json document used to give permission to the users
+
+cloud watch
+
+dashboard
+- select metric
+
+Alarm
+- all alarm 
+
+SNS
+simple notification service
+
+log
+log group
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

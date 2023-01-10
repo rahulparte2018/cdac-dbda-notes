@@ -1,0 +1,148 @@
+https site works only when we upload ssl certificate in it
+all the ports can also be opened 
+but do not do it as it can cause security issues
+open ssl for free ssl certificates
+
+sudo apt update -y
+sudo apt-get install apache2 -y
+sudo systemctl enable apache2
+check public IP website (Apache)
+cd /var/www/html/index.html
+
+try openssl for https
+
+for big file, move it to github and then move your file
+pull request
+
+mount commands
+files in local to folder in instance
+like shared folder or common memory
+
+also local to s3 
+then S3 to ec2
+s3cp - copy from s3
+the files in the S3 are copied
+
+manage rds services
+relational database system
+
+select the version of mysql to be installed 
+
+db cluster is the database name
+
+master username - admin
+master password
+rds is running on ec2 instance only
+
+how to connect to database
+- host name is the endpoint in the dattabase
+- port 3306 by default
+- username
+- password
+
+AMI is  of the instance configuration
+actions - upgrade, replication
+scaling in and out - decrease or increase the instance resource size
+
+definition
+keywords
+types of ec2
+
+route 
+
+migration from one service to other
+
+add port 3306
+
+
+- standard create
+- mysql
+- free tier
+- other default
+- admin
+- adminadmin
+- connectivity public access yes
+
+when you create an ec2 instance, we have to create the servers
+
+serverless
+- we do not have to create the servers
+
+eg - on ec2, to run python program you have to download the programs 
+on lambda, it is not needed
+
+deploy lambda
+- deploys changes in lambda to all where the lambda is used
+
+2 s3 buckets
+1 is input
+2nd is storage to which output is 
+
+boto3
+- used to interact with aws with python
+
+save data on s3
+
+UI 
+CLI
+SDK
+
+add destination
+if lambda is successfully executed/failure, we can trigger trigger something
+
+username
+accesskey
+use to access the amazon 
+
+lambda only works for 15 mins
+
+dynamic website - can be created using static website plus lambda
+
+acl - access control list
+bucket policy
+access point policy
+
+access point to the buckets
+
+https - hyper text transfer protocol secure
+requires ssl certificate
+secure socket layer
+
+bucket
+bucket name
+the region it is in
+access to it using acl, bucket policy, access point policy
+objects - upload
+presigned url - shareable link - time based
+ARN - Amazon resource name
+bucket policy - set up policy using policy generator on the net
+lifecycle rules or policy - what to do with the aged data
+access points attached to buckets
+S3 object operations
+VPC - virtual private cloud
+kms - key management system
+if somethhing has public endpoint, it can be accessed through public internet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
