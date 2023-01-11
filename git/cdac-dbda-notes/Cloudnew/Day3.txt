@@ -1,0 +1,180 @@
+EC2
+elastic compute cloud
+used for launching virtual servers
+- launch an instance
+- name and tags - testing my webserver
+- we can have different operating system on the cloud
+- choose amazon linux
+- free tier - one server
+- amazon linux 2 kernel 5.10
+- duration is 1 year
+
+instance type
+- gives us the resources available for us
+- t2 micro - 1Gb ram - 0.0116 $ per hour
+- here we select the amount of resources required
+
+key pair login
+- only able to use once
+- so save the key properly or else you will lose access to your EC2 account
+- create new key 
+- key pair name - testingkey
+- key pair type - RSA
+- keep everything default
+
+network settings
+- all options as default
+- allow SSH traffic from
+
+Configure storage
+- 8 gs
+
+to go to the EC2, click on the blue hyperlink
+or
+click on the instances on the left and search for the required instance
+
+alarm status 
+- aws also has its own internal alarm set
+
+location of the server depends on where the application user are.
+
+Connect to instance
+- click on instance id
+- on the top left corner, click on connect option
+- use ec2 instance connect and click on connect
+Four ways
+1. Ec2 instance connect
+	use this if you are good with commands
+
+- IP is the private ip, the one on the command shell
+
+- download mobaxterm 
+	toolbox for remote computing
+- since the view that we get from ec2 is cli, and it is difficult to use
+
+- open mobaxterm
+- click on session in mobaxterm
+- click on SSH - used to connect virtual machines
+- remote host details - go back to instance - instance id - either you public ip address or public ip dns - paste in remote host
+- specify username - add the user name used to connect the Ec2 instance
+- port 22 is the default port
+- advanced ssh settings - use private key - upload the key where you downloaded it - accept it
+- we get the same view as the one from EC2
+
+private Ip - internal ip for that network
+public ip - external for the internet
+
+- for next time on mobaXterm
+
+- mkdir test
+- it will get created in the home/ec2-user
+- right click on the folder and download the folder
+- don't delete stuff from the linux os
+- upload - drag and drop
+
+SSH Client
+- multiple ways to connect ssh server
+- its a package on windows
+- type ssh in powershell
+- locate private key and give it proper access
+
+- click on instance and check on different instance state available
+- instance cost is stopped when you stop the instance but the SSD used while making instance is still in use and therefore we also nneed to close it
+
+- start instance
+- terminate instance means deleting instance - this deletes the instannce
+
+volumes 
+
+how to keep your public ip to be same
+- elastic ip keeps your ip same 
+- as the ip 
+
+AMI 
+amazon machine images
+
+lamp server
+linux, apache, mysql, perl
+
+ami for application 
+benefit is that the application get installed at the time of instance creation
+
+t2 micro
+1 gb r
+8gb storage 
+1 cpu
+
+ssh work on port 22
+
+root volume - when instance gets deleted root volume gets deleted
+ebs volume do not get deleted 
+
+volume can be created and then attached to an instance
+one instance can have multiple volume
+it is not advisable to share volume between instances
+
+iops - input output operation per sec
+100 iops
+
+snapshot
+- is created for a volume
+- it copies the volume at a point
+- it is like a backup of the volume
+- we can create volume from snapshot
+
+autoscaling group
+- you setup the min size
+- desired capacity
+- maximum size
+size means number of instancesd
+
+Ec2 - elastic compute cloud - infrastructure as a aservice
+features -
+renting virtual machines (EC2)
+storing data on virtual drive (ebs)
+distributing load across machines (elb)
+scaling the services using an auto scaling group (asg)
+
+to run a website on EC2, we will have to install a webserver
+on the ec2 
+
+user always connect to the load balancer ip
+
+sage maker in aws used for ml
+
+security group
+- control how traffic is allowed into or out of the system
+
+- port 22 SSH
+- port 445 https
+- port 80 http
+
+445 and 80 are used for webservers access
+
+on demand instances - short workload, predictable pricing
+reserved: min 1 year max 3 years
+spot instances : short workloads, cheap, can lose instances
+dedicated hosts : book an entire physical server, control instance place
+dedicated instances : no other customers will share your hardware
+
+spot instances
+
+dedicated host - book an entire physical server, control instance
+
+dedicated instances - no other customers will share you hardware
+
+instances are subset of host
+
+vertical scalability
+
+
+How to connect to mobaxterm
+- click on session on top left
+- click on SSH on top left
+- put public ip address of instance in the remote host
+- put ec2-user in specify username
+- port 22
+- advanced ssh setting - put the key file for the instance
+congratulations you are connected to your ec2 instance
+
+How

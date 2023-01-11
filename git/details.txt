@@ -1,0 +1,331 @@
+----------------------------
+
+# Create a repository on github where you store all you CDAC notes
+ANS -
+
+this assignment only involves creating a git repo on your internal system and connecting it with the repo on the github
+then adding files / folders in that repo and pushing it to the github
+then accessing github from anywhere you want
+in this exercise - we first create a repo on the github - copy its https link - use it to create clone on the system - add file to these folder
+- open git bash in that folder - push these changes to github 
+
+https://github.com/rahulparte2018/Practice.git
+# this is a https link to connect with the repository on my github
+
+git clone https://github.com/rahulparte2018/Practice.git
+# this create a clone folder of the same folder as the repository that the https links to
+
+git status
+
+git add .
+
+git commit -m 'this is the first'
+
+git push origin main
+
+git pull
+
+git branch
+
+git branch newbranch1
+# to create a branch named newbranch1
+
+git checkout newbranch1
+# to use this branch 
+
+
+
+
+create a repository in the github site
+clone the git repository created on the github
+create a folder - open the folder - 
+open cmd there - run - git clone <url of git repo>
+now go to the folder which you want to put it on the git
+drag and drop these folder in the cloned repo on 
+note empty folder is not taken in the 
+
+repository name in the repo
+
+.git folder is needed
+. files are hidden
+run command
+
+config stores username and password
+
+the new folder added to the cloned folder are in red
+
+git add . 
+adds all the file in the current directory
+git status
+tell uus the status of all the files
+add commands the git to start tracking the files
+before which it does not track the files
+
+next command
+git commit -m 'my first commit'
+every file has to version
+local means unstaged
+git pe ho toh staged hai
+
+git branch
+shows the name of all the branches in the git
+
+git push origin main
+now you can see all the folders on the git
+
+branch
+there are two different developer working on the same file
+you made some changes in the file
+you will create your own branch and push these changes to that branch
+eventually when pushing it on the server - you merge it using git merge
+
+main on the git website ui
+- click on new branch
+
+origin tells that push the code on the main branch on the internet
+
+------------------------------------------------
+##### create a new repository on the command line
+echo "# Practice" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/rahulparte2018/Practice.git
+git push -u origin main
+
+##### push an existing repository from the command line
+git remote add origin https://github.com/rahulparte2018/Practice.git
+git branch -M main
+git push -u origin main
+
+#####
+
+-----------------------------
+
+
+# the question here is to connect an EC2 instance with a git repo
+this is same as the one above
+it is just that this is a virtual machine while above it was an actual machine
+
+we can then add a file to host on our ec2 machine from the repo
+the webpage is only hosted until the code is ran in the ec2 machine
+once it stops we stop getting the output
+
+create an ec2 instance with linux 
+install git on it
+
+
+
+sudo yum install git
+
+create a folder on the ec2
+mkdir newfolder
+
+change directory
+cd newfolder/
+
+in this folder use command below to pull repository
+git clone <https url>
+this creates the clone 
+
+put the credentials in there
+username - rahulparte2018
+token value - put the token values here
+
+to create the token value again
+click on settings
+go to left 
+developer settings
+PAT - personal access token
+token classics
+token value are only created once and read once
+copy the token and save it
+one token can be used to access any repository
+
+check if the repository has been cloned or not
+command is
+ls
+this will give us the cloned repository name here
+
+for windows, password is stored 
+but on ec2 instance running it is not stored
+WRONG
+
+settings that can change the access list
+
+----------------------------------------------
+
+git scm book for reference material
+
+------------------------------------------
+
+main or master 
+origin branch_name
+
+--------------------------------------
+CloudFormation
+Infrastructure as a code
+this is where you tell the aws to what all you need or not
+like all the steps 
+1. create ec2 instance
+2. install streamlit
+
+this is an automation tool
+python code
+write end to end code
+you code once and circulate it to all the people in your institute
+------------------------
+
+## automatically add the files that are added to the repository on the ec2 instance
+here we use the feature action which has code to connect with ec2 instance and run some commands there
+
+initial ip address
+54.84.93.107
+
+new after my instance stopped and started again
+54.157.182.75
+
+look it is different
+
+while selecting target be specific where you are adding 
+
+
+if we don't use elastic ip address our instance public ip address will keep on changing and we won't be able to connect to it properly
+
+CICD
+continuous integration and continuous deployment
+
+actions or pipeline
+
+YAML
+every time i push on this repository
+there will be a bunch of things to happen
+this is used for cicd
+the code is automatically deployed on the ec2 instance when someone is pushed
+
+if not automated we had to pull it again and again on every push
+to solve it we have actions or pipeline setup
+
+.github folder / workflows / main.yml
+
+go to actions on github website
+click on new workflow
+setup a workflow yourself - by default creates the folder structure required
+
+YAML is a human-readable data-serialization language
+
+private key - ssh key
+host name - whatever ip is 
+
+click on start commit
+
+---------------------------------
+name: Push-to-EC2
+
+on: push
+
+jobs:
+  deploy:
+    name: Push to EC2 Instance
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Deploy to my EC2 instance
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          SOURCE: "./"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: "/home/ec2-user/"
+      - name: Install Dependencies
+        run: pip3 install -r requirements.txt
+-----------------------------------
+
+install all the library name in the requirements.txt 
+
+settings
+
+i do not want all the user to see certain information
+go to repository settings
+click on settings in the repository file
+
+go to settings
+left side - secrets and variable or secrets actions
+add a new repostitiory secret
+secret name should be the same as the one used in the yaml code
+add the secret name
+
+$ {{}} MEANS ITS A VARIABLE THAT WILL BE REPLACED DURING RUN TIME
+
+in the ec2-ssh-key 
+copy the entire key in the secret key and update it
+
+
+----------------------------------------
+
+two developers
+are accessing the same repository
+two code bases belonging to two different user
+one user made changes on the file 
+the other user also made some changes on the file
+now both pushed their code 
+whhich to take and which not
+error pops comes out
+
+error on merge
+below is error
+
+merge conflicts 
+
+change the files
+git commit -m 'merge conflict resolved'
+
+git pull origin main
+
+git push origin main
+
+merge conflicts need to be solved manually
+----------------------------------------
+
+add another file from where you want into the repository
+where you have done the git clone
+then push this it on the repository
+
+create a requirement.txt files and write streamlit in it
+
+--------
+add any random file in the internal repository
+
+:wq! when we get the pull error
+
+instance ip changes once the lab is turned off 
+that was the problem that we faced
+
+
+error 
+target setup was not proper 
+as a result files were getting pulled in different directory
+
+-----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
